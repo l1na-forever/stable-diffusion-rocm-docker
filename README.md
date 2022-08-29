@@ -4,7 +4,7 @@ Go from `docker pull; docker run; txt2img` on a Radeon ✨.
 
 Provides a Dockerfile that packages the [basujindal optimized Stable Diffusion](https://github.com/basujindal/stable-diffusion) repository, preconfigured with dependencies to run on AMD Radeon GPUs (particularly 5xxx/6xxx desktop-class GPUs) via [AMD's ROCm platform](https://docs.amd.com/category/ROCm%E2%84%A2%20v5.x).
 
-<img alt="sample of the provided sample prompt, an autumn forest" src="https://raw.githubusercontent.com/l1na-forever/stable-diffusion-rocm-docker/mainline/sample.png" />
+<img alt="sample of the provided sample prompt, an autumn forest" src="https://raw.githubusercontent.com/l1na-forever/stable-diffusion-rocm-docker/main/sample.png" />
 
 Requirements
 --
