@@ -24,7 +24,7 @@ First, pull the Docker image locally:
 Now, create an alias which will be used to run the Docker container. This normally goes in your `~/.zshrc` or `~/.bashrc`:
 
 ```
-    alias drun='sudo docker run -it --network=host --device=/dev/kfd --device=/dev/dri --group-add=video --ipc=host --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/pwd' ​
+    alias drun='docker run -it --network=host --device=/dev/kfd --device=/dev/dri --group-add=video --ipc=host --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/pwd' ​
 ```
 
 Finally, run the container: 
