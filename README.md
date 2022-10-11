@@ -46,7 +46,7 @@ Troubleshooting
 --
 **Container fails to start with `hipErrorNoBinaryForGpu: Unable to find code object for all current devices!`**
 
-See #1. HIP's libraries bundled with the docker image are failing to load the right kernel for the specific GPU being used (this is particularly true with RX6xxx mobile variants). Try setting an environment variable to force HIP to use the `gfx1030` kernel by passing the parameter `-e HSA_OVERRIDE_GFX_VERSION=10.3.0` to `docker run`, or updating the above `drun` alias. For example:
+See [issue #1](https://github.com/l1na-forever/stable-diffusion-rocm-docker/issues/1). HIP's libraries bundled with the docker image are failing to load the right kernel for the specific GPU being used (this is particularly true with RX6xxx mobile variants). Try setting an environment variable to force HIP to use the `gfx1030` kernel by passing the parameter `-e HSA_OVERRIDE_GFX_VERSION=10.3.0` to `docker run`, or updating the above `drun` alias. For example:
 
 ```
     alias drun='docker run -e HSA_OVERRIDE_GFX_VERSION=10.3.0 -it --network=host --device=/dev/kfd --device=/dev/dri --group-add=video --ipc=host --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v $(pwd):/pwd'
