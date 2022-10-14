@@ -2,7 +2,7 @@ Stable Diffusion ROCm (Radeon OpenCompute) Dockerfile
 ==
 Go from `docker pull; docker run; txt2img` on a Radeon ✨.
 
-Provides a Dockerfile that packages the [Stable Diffusion WebUI](https://github.com/sd-webui/stable-diffusion-webui) repository, preconfigured with dependencies to run on AMD Radeon GPUs (particularly 5xxx/6xxx desktop-class GPUs) via [AMD's ROCm platform](https://docs.amd.com/category/ROCm%E2%84%A2%20v5.x).
+Provides a Dockerfile that packages the [AUTOMATIC1111 fork Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) repository, preconfigured with dependencies to run on AMD Radeon GPUs (particularly 5xxx/6xxx desktop-class GPUs) via [AMD's ROCm platform](https://docs.amd.com/category/ROCm%E2%84%A2%20v5.x).
 
 <img alt="screenshot of a Void Linux/AMD GPU machine using the Stable Diffusion WebUI" src="https://raw.githubusercontent.com/l1na-forever/stable-diffusion-rocm-docker/main/assets/void_screenshot.webp" />
 
