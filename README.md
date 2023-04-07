@@ -11,6 +11,7 @@ Requirements
 - A compatible Radeon card (VEGA 56/64, Radeon RX 67XX/68XX/69XX). Other cards may also function at some capacity.
 - Modern Linux kernel with ROCM module (Kernel 5.10+)
 - Docker
+- Approximately 50GB of drive space for docker installation
 
 Usage
 --
