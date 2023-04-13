@@ -18,7 +18,9 @@ services:
       - modules:/sd/modules
       - models:/sd/models
       - plugins:/sd/plugins
+      - outputs:/sd/outputs
 volumes:
   modules:
   models:
-  plugins: 
+  plugins:
+  outputs: 
