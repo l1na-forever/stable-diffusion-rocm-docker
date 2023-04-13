@@ -23,6 +23,7 @@ RUN apt-get update && \
     source venv/bin/activate && \
     python -m pip install --upgrade pip wheel && \
     python -m $TORCH_COMMAND && \
+    python -m pip install --force-reinstall httpcore==0.15 && \
     echo "Downloading SDv1.4 Model File.." && \
     curl -o models/Stable-diffusion/model.ckpt https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media       
 
