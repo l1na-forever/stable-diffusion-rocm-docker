@@ -2,12 +2,15 @@ FROM alpine/git:latest AS builder
 WORKDIR /opt
 RUN git clone --depth 1 https://github.com/AUTOMATIC1111/stable-diffusion-webui
 WORKDIR /opt/stable-diffusion-webui
+#rogue torch version
+RUN sed -i -e '/^torch\r/d' requirements.txt
+RUN sed -i -e '/^torch\r/d' requirements_versions.txt
+
 
 FROM rocm/pytorch:latest
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PYTHONIOENCODING=UTF-8 \
-    TORCH_COMMAND='pip install --upgrade torch torchvision --extra-index-url https://download.pytorch.org/whl/rocm5.1.1' \
     REQS_FILE='requirements.txt'
 
 COPY --from=builder /opt/stable-diffusion-webui /sd
@@ -22,11 +25,10 @@ RUN apt-get update && \
     python -m venv venv && \
     source venv/bin/activate && \
     python -m pip install --upgrade pip wheel && \
-    python -m $TORCH_COMMAND && \
-    python -m pip install --force-reinstall httpcore==0.15 && \
-    echo "Downloading SDv1.4 Model File.." && \
-    curl -o models/Stable-diffusion/model.ckpt https://www.googleapis.com/storage/v1/b/aai-blog-files/o/sd-v1-4.ckpt?alt=media       
+    python -m pip install --force-reinstall httpcore==0.15
+
+RUN python -m pip install --force-reinstall numpy==1.21.6
 
 EXPOSE 7860
 
-ENTRYPOINT python launch.py --precision full --no-half
+ENTRYPOINT python launch.py --precision full --no-half --listen
