@@ -8,10 +8,14 @@ services:
       - /dev/dri:/dev/dri
     environment:
       # VERY COMMON NEED ENVIRONMENT VARIABLE
-      - HSA_OVERRIDE_GFX_VERSION=10.3.4
-    image: 1naforever/stable-diffusion-rocm:latest
+      - HSA_OVERRIDE_GFX_VERSION=10.3.0
+      # Allows for more use of the VRAM cache
+      - PYTORCH_HIP_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_mb:256
+    image: stable-diff:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     ipc: host
-    network_mode: "host"
     security_opt:
       - seccomp:unconfined
     volumes:
@@ -19,6 +23,11 @@ services:
       - models:/sd/models
       - plugins:/sd/plugins
       - outputs:/sd/outputs
+    ports:
+      - 7860:7860
+    group_add:
+      - video
+      - render
 volumes:
   modules:
   models:
